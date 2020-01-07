@@ -15,7 +15,7 @@ import java.util.List;
  * @create 2020/1/7
  * @since 1.0.0
  */
-@Service
+@Service 
 public class AccountVeriftyServiceImpl implements IAccountVeriftyService {
     @Autowired
     AccountMapper accountMapper;
