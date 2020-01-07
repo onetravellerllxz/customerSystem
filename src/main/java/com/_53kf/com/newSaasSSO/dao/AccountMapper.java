@@ -1,6 +1,9 @@
 package com._53kf.com.newSaasSSO.dao;
 
+import com._53kf.com.newSaasSSO.entity.Account;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -10,5 +13,6 @@ import org.springframework.stereotype.Component;
  * @since 1.0.0
  */
 @Component
-public class AccountMapper {
+public interface AccountMapper {
+    List<Account> getAccountMsg();
 }

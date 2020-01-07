@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com._53kf.newSaasSSO.dao.AccountMapperMapper">
-    <select id="getFacilitatorId" resultType="com._53kf.newSaasSSO.entity.Account">
-    select * from Account
+    <select id="getAccountMsg" resultType="com._53kf.newSaasSSO.entity.Account">
+        select * from newsaas_user
     </select>
 </mapper>
