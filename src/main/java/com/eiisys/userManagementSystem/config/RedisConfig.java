@@ -1,4 +1,4 @@
-package com._53kf.com.newSaasSSO.config;
+package com.eiisys.userManagementSystem.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

@@ -1,6 +1,6 @@
-package com._53kf.com.newSaasSSO.controller;
+package com.eiisys.userManagementSystem.controller;
 
-import com._53kf.com.newSaasSSO.service.impl.AccountVeriftyServiceImpl;
+import com.eiisys.userManagementSystem.service.impl.AccountVeriftyServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,8 +25,14 @@ public class LoginController {
     @ResponseBody
     @RequestMapping("/newsaaslogin")
     public String saasBackgroundLogin(HttpServletRequest request){
-        System.out.println(request.getCookies());
-        System.out.println(accountVeriftyService.getAccount());
-        return "success";
+        try {
+            System.out.println(request.getCookies());
+            System.out.println(accountVeriftyService.getAccount());
+        }catch (Exception e){
+            e.printStackTrace();
+            return "false";
+        }
+        return accountVeriftyService.getAccount().toString();
     }
+
 }

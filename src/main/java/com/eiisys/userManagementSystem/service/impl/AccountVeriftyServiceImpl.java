@@ -1,8 +1,8 @@
-package com._53kf.com.newSaasSSO.service.impl;
+package com.eiisys.userManagementSystem.service.impl;
 
-import com._53kf.com.newSaasSSO.dao.AccountMapper;
-import com._53kf.com.newSaasSSO.entity.Account;
-import com._53kf.com.newSaasSSO.service.IAccountVeriftyService;
+import com.eiisys.userManagementSystem.mapper.AccountMapper;
+import com.eiisys.userManagementSystem.entity.Account;
+import com.eiisys.userManagementSystem.service.IAccountVeriftyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * @create 2020/1/7
  * @since 1.0.0
  */
-@Service 
+@Service
 public class AccountVeriftyServiceImpl implements IAccountVeriftyService {
     @Autowired
     AccountMapper accountMapper;

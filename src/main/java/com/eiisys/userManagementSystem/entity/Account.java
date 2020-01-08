@@ -1,5 +1,6 @@
-package com._53kf.com.newSaasSSO.entity;
+package com.eiisys.userManagementSystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -21,5 +22,6 @@ public class Account {
     private String email;
     private Integer is_admin;
     private Integer identity_id;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date register_time;
 }
