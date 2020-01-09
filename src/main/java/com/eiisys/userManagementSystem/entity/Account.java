@@ -2,7 +2,10 @@ package com.eiisys.userManagementSystem.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -13,7 +16,7 @@ import java.util.Date;
  * @since 1.0.0
  */
 @Data
-public class Account {
+public class Account implements Serializable {
     private Integer id;
     private String username;
     private String password;
@@ -23,5 +26,6 @@ public class Account {
     private Integer is_admin;
     private Integer identity_id;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date register_time;
 }
