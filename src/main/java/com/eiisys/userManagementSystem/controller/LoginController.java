@@ -25,6 +25,7 @@ import java.util.Map;
  */
 @Controller
 @Slf4j
+@RequestMapping
 public class LoginController {
     @Autowired
     AccountVeriftyServiceImpl accountVeriftyService;

@@ -40,14 +40,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //拦截相应请求,选择formLogin模式
         http.authorizeRequests()
                 //配置权限
-                .antMatchers("/login").permitAll()//不拦截登陆请求
+                .antMatchers("/newsaasmanage/newsaaslogin").permitAll()//不拦截登陆请求
                 .antMatchers("/aaaa").hasAnyAuthority("addOrder")
                 .antMatchers("/rrrr").hasAnyAuthority("delOrder")
                 .antMatchers("/newsaaslogin").hasAnyAuthority("editOrder")
-                //csrf如果不禁用一定要传一个token
-                .antMatchers("/abb").fullyAuthenticated().and().formLogin().loginPage("/login")
+                .antMatchers("/abb").fullyAuthenticated().and()
+                .formLogin().loginPage("/login")
                 .successHandler(myAuthenticationSuccessHandler)
                 .failureHandler(myAuthenticationFailureHandler)
+                //csrf如果不禁用一定要传一个token
                 .and().csrf().disable();
     }
 

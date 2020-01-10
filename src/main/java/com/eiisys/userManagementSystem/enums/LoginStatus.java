@@ -22,17 +22,14 @@ public enum LoginStatus {
         this.message = message;
     }
 
-    /**
-     * @author: zzx     * @date: 2018-10-15 16:26     * @deprecation:通过code返回枚举
-     */
-    public static LoginStatus parse(int code) {
-        LoginStatus[] values = values();
-        for (LoginStatus value : values) {
-            if (value.getCode() == code) {
-                return value;
-            }
-        }
-        throw new RuntimeException("Unknown code of ResultEnum");
-    }
+//    public static LoginStatus parse(int code) {
+//        LoginStatus[] values = values();
+//        for (LoginStatus value : values) {
+//            if (value.getCode() == code) {
+//                return value;
+//            }
+//        }
+//        throw new RuntimeException("Unknown code of ResultEnum");
+//    }
 
 }
