@@ -17,6 +17,6 @@ import java.io.IOException;
 public class ErrorController {
     @RequestMapping("/error/403")
     public void error(HttpServletResponse response) throws IOException {
-        response.sendRedirect("https://www.baidu.com");
+        response.sendRedirect("https://www.qq.com");
     }
 }

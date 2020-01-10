@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  * @since 1.0.0
  */
 @Component
-@EnableWebSecurity
+@EnableWebSecurity//开启权限,其实就是开启过滤器帮你拦截请求
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyAuthenticationFailureHandler myAuthenticationFailureHandler;
@@ -29,9 +29,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //配置认证用户信息和权限
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //添加一个账号
+        //添加一个账号并且给他增加权限
         auth.inMemoryAuthentication().withUser("admin").password("123123").authorities("addOrder", "delOrder");
-        auth.inMemoryAuthentication().withUser("root").password("123123").authorities("editOrder", "delOrder");
+        auth.inMemoryAuthentication().withUser("root").password("123123").authorities("editOrder");
     }
 
     //配置拦截请求资源
@@ -41,17 +41,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 //配置权限
                 .antMatchers("/newsaasmanage/newsaaslogin").permitAll()//不拦截登陆请求
-                .antMatchers("/aaaa").hasAnyAuthority("addOrder")
-                .antMatchers("/rrrr").hasAnyAuthority("delOrder")
-                .antMatchers("/newsaaslogin").hasAnyAuthority("editOrder")
-                .antMatchers("/abb").fullyAuthenticated().and()
-                .formLogin().loginPage("/login")
+                .antMatchers("/newsaasmanage/aaaa").hasAnyAuthority("addOrder")
+                .antMatchers("/newsaasmanage/rrrr").hasAnyAuthority("delOrder")
+                .antMatchers("/newsaasmanage/newsaaslogin").hasAnyAuthority("editOrder")
+                .antMatchers("/newsaasmanage/abb").fullyAuthenticated().and()
+                .formLogin().loginPage("/newsaasmanage/login")
                 .successHandler(myAuthenticationSuccessHandler)
                 .failureHandler(myAuthenticationFailureHandler)
                 //csrf如果不禁用一定要传一个token
                 .and().csrf().disable();
     }
-
+    //取消密码加密(security5.0的原因)
     @Bean
     public static NoOpPasswordEncoder passwordEncoder() {
         return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
