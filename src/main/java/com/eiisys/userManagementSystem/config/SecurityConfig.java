@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/newsaasmanage/newsaaslogin").permitAll()//不拦截登陆请求
                 .antMatchers("/newsaasmanage/aaaa").hasAnyAuthority("addOrder")
                 .antMatchers("/newsaasmanage/rrrr").hasAnyAuthority("delOrder")
-                .antMatchers("/newsaasmanage/newsaaslogin").hasAnyAuthority("editOrder")
+                .antMatchers("/newsaasmanage/newsaaslogi").hasAnyAuthority("editOrder")
                 .antMatchers("/newsaasmanage/abb").fullyAuthenticated().and()
                 .formLogin().loginPage("/newsaasmanage/login")
                 .successHandler(myAuthenticationSuccessHandler)

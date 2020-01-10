@@ -42,4 +42,20 @@ public class LoginController {
         }
         return ResultVO.success(LoginStatus.SUCCESS,"231","121",true).toString();
     }
+
+    @ResponseBody
+    @RequestMapping("/newsaaslogi")
+    public String saasBackgroundLogi(HttpServletRequest request, HttpServletResponse response){
+        try {
+            System.out.println(request.getRequestURI());
+            System.out.println(request.getParameter("a"));
+            System.out.println(request.getCookies());
+            Account account = accountVeriftyService.getAccount().get(0);
+            response.sendRedirect("https://www.71baomu.com");
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultVO.success(LoginStatus.SUCCESS,"231","121",true).toString();
+        }
+        return ResultVO.success(LoginStatus.SUCCESS,"231","121",true).toString();
+    }
 }

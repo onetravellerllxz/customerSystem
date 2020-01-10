@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 
 /**
- * 〈一句话功能简述〉<br>
+ * 〈web页面配置〉<br>
  *
  * @author 当时明月在
  * @create 2020/1/9
