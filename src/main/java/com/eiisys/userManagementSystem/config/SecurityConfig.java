@@ -1,5 +1,9 @@
 package com.eiisys.userManagementSystem.config;
 
+import com.eiisys.userManagementSystem.handler.MyAuthenticationFailureHandler;
+import com.eiisys.userManagementSystem.handler.MyAuthenticationSuccessHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -17,6 +21,11 @@ import org.springframework.stereotype.Component;
 @Component
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private MyAuthenticationFailureHandler myAuthenticationFailureHandler;
+    @Autowired
+    private MyAuthenticationSuccessHandler myAuthenticationSuccessHandler;
+
     //配置认证用户信息和权限
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -28,13 +37,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //配置拦截请求资源
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //拦截相应请求,选择httpbasic模式
+        //拦截相应请求,选择formLogin模式
         http.authorizeRequests()
                 //配置权限
+                .antMatchers("/login").permitAll()//不拦截登陆请求
                 .antMatchers("/aaaa").hasAnyAuthority("addOrder")
                 .antMatchers("/rrrr").hasAnyAuthority("delOrder")
                 .antMatchers("/newsaaslogin").hasAnyAuthority("editOrder")
-                .antMatchers("/abb").fullyAuthenticated().and().formLogin();
+                //csrf如果不禁用一定要传一个token
+                .antMatchers("/abb").fullyAuthenticated().and().formLogin().loginPage("/login")
+                .successHandler(myAuthenticationSuccessHandler)
+                .failureHandler(myAuthenticationFailureHandler)
+                .and().csrf().disable();
+    }
+
+    @Bean
+    public static NoOpPasswordEncoder passwordEncoder() {
+        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
     }
 
 }

@@ -23,7 +23,6 @@ import java.util.Map;
  * @create 2020/1/7
  * @since 1.0.0
  */
-@RequestMapping("/login")
 @Controller
 @Slf4j
 public class LoginController {

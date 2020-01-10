@@ -19,9 +19,7 @@ import java.io.IOException;
  * @create 2020/1/9
  * @since 1.0.0
  */
-@Component
 public class AjaxAuthenticationEntryPoint implements AuthenticationEntryPoint {
-    @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         httpServletResponse.getWriter().write(JSON.toJSONString(ResultVO.result(LoginStatus.USER_NEED_AUTHORITIES, false)));
     }
