@@ -25,5 +25,4 @@ public class AjaxAuthenticationEntryPoint implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         httpServletResponse.getWriter().write(JSON.toJSONString(ResultVO.result(LoginStatus.USER_NEED_AUTHORITIES, false)));
     }
-
 }
