@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 @Slf4j
-@RequestMapping
+@RequestMapping("/login")
 public class LoginController {
     @Autowired
     AccountVeriftyServiceImpl accountVeriftyService;

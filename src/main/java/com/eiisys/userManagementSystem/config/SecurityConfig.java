@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //拦截相应请求,选择formLogin模式
         http.authorizeRequests()
                 //配置权限
-                .antMatchers("/newsaasmanage/newsaaslogin").permitAll()//不拦截登陆请求
+               // .antMatchers("/newsaasmanage/newsaaslogin").permitAll()//不拦截登陆请求
                 .antMatchers("/newsaasmanage/aaaa").hasAnyAuthority("addOrder")
                 .antMatchers("/newsaasmanage/rrrr").hasAnyAuthority("delOrder")
                 .antMatchers("/newsaasmanage/newsaaslogi").hasAnyAuthority("editOrder")
